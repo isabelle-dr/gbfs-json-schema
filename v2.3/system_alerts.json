@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson",
+  "$id": "https://github.com/NABSA/gbfs/blob/v3.0-RC/gbfs.md#system_alertsjson",
   "description": "Describes ad-hoc changes to the system.",
   "type": "object",
   "properties": {
@@ -20,7 +20,7 @@
       "description":
         "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
-      "const": "2.3"
+      "const": "3.0-RC"
     },
     "data": {
       "description": "Array that contains ad-hoc alerts for the system.",
@@ -86,17 +86,61 @@
               "url": {
                 "description":
                   "URL where the customer can learn more information about this alert.",
-                "type": "string",
-                "format": "uri"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "summary": {
                 "description":
                   "A short summary of this alert to be displayed to the customer.",
-                "type": "string"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "description": {
                 "description": "Detailed description of the alert.",
-                "type": "string"
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "last_updated": {
                 "description":

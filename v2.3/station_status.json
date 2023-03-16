@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson",
+  "$id": "https://github.com/NABSA/gbfs/blob/v3.0-RC/gbfs.md#station_statusjson",
   "description":
     "Describes the capacity and rental availability of the station",
   "type": "object",
@@ -21,7 +21,7 @@
       "description":
         "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
-      "const": "2.3"
+      "const": "3.0-RC"
     },
     "data": {
       "description":
@@ -37,7 +37,7 @@
                 "description": "Identifier of a station.",
                 "type": "string"
               },
-              "num_bikes_available": {
+              "num_vehicles_available": {
                 "description":
                   "Number of vehicles of any type physically available for rental at the station.",
                 "type": "integer",
@@ -66,7 +66,7 @@
                   "required": ["vehicle_type_id", "count"]
                 }
               },
-              "num_bikes_disabled": {
+              "num_vehicles_disabled": {
                 "description":
                   "Number of disabled vehicles of any type at the station.",
                 "type": "integer",
@@ -130,7 +130,7 @@
             },
             "required": [
               "station_id",
-              "num_bikes_available",
+              "num_vehicles_available",
               "is_installed",
               "is_renting",
               "is_returning",

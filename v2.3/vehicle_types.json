@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id":
-    "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson-added-in-v21-rc",
+    "https://github.com/NABSA/gbfs/blob/v3.0-RC/gbfs.md#vehicle_typesjson-added-in-v21-rc",
   "description":
     "Describes the types of vehicles that System operator has available for rent (added in v2.1-RC).",
   "type": "object",
@@ -22,7 +22,7 @@
       "description":
         "GBFS version number to which the feed conforms, according to the versioning framework.",
       "type": "string",
-      "const": "2.3"
+      "const": "3.0-RC"
     },
     "data": {
       "description": "Response data in the form of name:value pairs.",
@@ -91,8 +91,23 @@
                 "minimum": 0
               },
               "name": {
-                "description": "The public name of this vehicle type.",
-                "type": "string"
+                "description": "The public name of this vehicle type. An array with one object per supported language with the following keys:",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "vehicle_accessories": {
                 "description": "Description of accessories available in the vehicle.",
@@ -112,16 +127,65 @@
                 "format": "uri"
               },
               "make": {
-                "description": "The name of the vehicle manufacturer. Added in v2.3",
-                "type": "string"
+                "description": "The name of the vehicle manufacturer. An array with one object per supported language with the following keys:",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "model": {
-                "description": "The name of the vehicle model. Added in v2.3",
-                "type": "string"
+                "description": "The name of the vehicle model. An array with one object per supported language with the following keys:",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "color": {
                 "description": "The color of the vehicle. Added in v2.3",
                 "type": "string"
+              },
+              "description": {
+                "description": "Customer-readable description of the vehicle type outlining special features or how-tos. An array with one object per supported language with the following keys:",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "description": "The translated text.",
+                      "type": "string"
+                    },
+                    "language": {
+                      "description": "IETF BCP 47 language code.",
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z]{2})?$"
+                    }
+                  },
+                  "required": ["text", "language"]
+                }
               },
               "wheel_count": {
                 "description": "Number of wheels this vehicle type has. Added in v2.3",
@@ -201,4 +265,3 @@
   },
   "required": ["last_updated", "ttl", "version", "data"]
 }
-
